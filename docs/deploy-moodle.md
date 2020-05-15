@@ -8,7 +8,7 @@ optionally backed up through Azure.
 
 Host VM (where Moodle to be installed) and Ansible VM should be in the same resource group and same location.
 
-# Enabling Password Authentication  
+## Enabling Password Authentication  
 •	Login into host VM and navigate home/azureadmin(user)/ 
 •	Run the following commands to enable password authentication.
 
@@ -54,7 +54,7 @@ Note:
 -	moodlemain.sh script will create a "run.sh" script at the home/azureadmin(user)/ 
 
 
-# Execute Ansible playbook
+## Execute Ansible playbook
 
 ## Installing Moodle into host VM.
 
