@@ -1,6 +1,6 @@
 # Deploy Moodle on LAMP Stack to Azure
 
-After following the steps in this this document you will have a new Moodle instance, ready to host your application at sclae.
+After following the steps in this this document you will have a new Moodle instance, ready to host your application at scale.
 The filesystem behind it is mirrored for high availability and
 optionally backed up through Azure.
 
@@ -62,12 +62,13 @@ Note:
 
 Login to Ansible VM and go to /home/azureadmin(username)/ path.
 Run the below command to install Moodle in host VM
+                
                 bash run.sh
 
 
 #### Installation and Replication of Moodle
 
-##### Installing Moodle into host VM.
+##### Installing Moodle into Host VM.
 
 run.sh file will execute ansible script "moodlescript.sh" which will run the playbook with the user provided details.
     
