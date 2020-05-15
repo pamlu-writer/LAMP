@@ -4,13 +4,15 @@ After following the steps in this this document you will have a new Moodle insta
 The filesystem behind it is mirrored for high availability and
 optionally backed up through Azure.
 
+
 ## Prerequisites
 
 Host VM (where Moodle to be installed) and Ansible VM should be in the same resource group and same location.
+This procedure tested on Ubuntu 16.04-LTS
 
 ## Enabling Password Authentication  
-•	Login into host VM and navigate home/azureadmin(user)/ 
-•	Run the following commands to enable password authentication.
+- Login into host VM and navigate home/azureadmin(user)/ 
+- Run the following commands to enable password authentication.
 
 ```sh
 sudo sed -i "s~PasswordAuthentication no~PasswordAuthentication yes~" /etc/ssh/sshd_config
@@ -88,11 +90,11 @@ run.sh file will execute ansible script "moodlescript.sh" which will run the pla
 
 - In replication role it will download and execute the script “moodlereplication.sh” . It will replicate Moodle directory to the Virtual Machine Scale Set (VMSS). 
 
-    - Replication Script(moodlereplication.sh) will have following functions
-        	- Change location: It will move the Moodle folder to /azlamp/html/ location
-                - Configure SSL certs: Generate OpenSSL certificates to /azlamp/certs/ folder
-                - Linking data location:  This function will link data to all shared  web frontend instances
-                - Update Nginx Configuration: This function will update the Nginx configuration file
-                - Moodledata: It will create parent and Moodle data directory for Moodle and this will be replicating to the VMSS
-                - Replication: This function will replicate the Moodle folder to the VMSS instance
+- Replication Script(moodlereplication.sh) will have following functions
+    - Change location: It will move the Moodle folder to /azlamp/html/ location
+    - Configure SSL certs: Generate OpenSSL certificates to /azlamp/certs/ folder
+    - Linking data location:  This function will link data to all shared  web frontend instances
+    - Update Nginx Configuration: This function will update the Nginx configuration file
+    - Moodledata: It will create parent and Moodle data directory for Moodle and this will be replicating to the VMSS
+    - Replication: This function will replicate the Moodle folder to the VMSS instance
 
