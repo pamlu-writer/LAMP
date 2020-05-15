@@ -54,18 +54,18 @@ Note:
 -	moodlemain.sh script will create a "run.sh" script at the home/azureadmin(user)/ 
 
 
-## Execute Ansible playbook
+#### Execute Ansible playbook
 
-## Installing Moodle into host VM.
+#### Install Moodle into host VM.
 
 Login to Ansible VM and go to /home/azureadmin(username)/ path.
 Run the below command to install Moodle in host VM
                 bash run.sh
 
 
-## Installation and Replication of Moodle
+#### Installation and Replication of Moodle
 
-### Installing Moodle into host VM.
+##### Installing Moodle into host VM.
 
 run.sh file will execute ansible script "moodlescript.sh" which will run the playbook with the user provided details.
     
