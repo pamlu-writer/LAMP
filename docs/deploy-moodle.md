@@ -1,14 +1,12 @@
 # Deploy Moodle on LAMP Stack to Azure
 
-After following the steps in this this document you will have a new Moodle instance, ready to host your application at scale.
-The filesystem behind it is mirrored for high availability and
-optionally backed up through Azure.
-
+Below steps will help user to built a new Moodle instance, ready to host your application at scale.
+The filesystem behind it is mirrored for high availability and optionally backed up through Azure.
 
 ## Prerequisites
 
 Host VM (where Moodle to be installed) and Ansible VM should be in the same resource group and same location.
-This procedure tested on Ubuntu 16.04-LTS
+Please note that this procedure tested on Ubuntu 16.04-LTS
 
 ## Enabling Password Authentication  
 - Login into host VM and navigate home/azureadmin(user)/ 
