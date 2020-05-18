@@ -3,8 +3,6 @@
 Below steps will help user to build a new Moodle instance, ready to host your application at scale.
 The filesystem behind it is mirrored for high availability and optionally backed up through Azure.
 
-![Workflow](https://github.com/krishnaitalent/LAMP/blob/Moodle_documentation/images/Ansible-Moodle.png)
-
 ## Prerequisites
 
 Host VM (where Moodle to be installed) and Ansible VM should be in the same resource group and same location.
