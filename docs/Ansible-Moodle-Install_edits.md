@@ -48,7 +48,6 @@ The Ansible VM will be used to execute the Moodle installation script. To deploy
 1. Use the [ARM Template](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fummadisudhakar%2FLAMP%2Fansible_playbook_mat32%2Fansibledeploy-moodle.json) to start the Ansible VM deployment. Make sure you are deploying Ansible VM into the same Azure resource group and region that hosts the Controller VM.
 2. Enter the name of the Ansible VM.
 3. Enter the Controller VM information that you gathered earlier:
-	*	Conroller VM name
 	*	SSH public key
 	*	Controller VM username
 	*	Controller VM IP address
