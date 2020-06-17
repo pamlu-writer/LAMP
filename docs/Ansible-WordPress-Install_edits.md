@@ -24,7 +24,7 @@ The installation process consists of the following high-level procedures:
 ### Enable Password Authentication on the Controller VM
 Enabling password authentication allows you to obtain the Controller VM credentials and copy the SSH keys that you will need to deploy the Ansible VM later in the installation process.
 
-1. Login to the Controller VM and navigate to the /home/*azureadmin(user)*/ directory, where *azureadmin(user)* represents the username of the Azure admin account.
+1. Log in to the Controller VM and navigate to the /home/*azureadmin(user)*/ directory, where *azureadmin(user)* represents the username of the Azure admin account.
 2. Run the following commands to enable password authentication.
 
 ```
@@ -61,29 +61,29 @@ The Ansible VM will be used to execute the WordPress installation script. To dep
 	*	Domain of the load balancer
 
 The following processes occur during the deployment:
-	*	The ARM Template executes the wordpress_main.sh script from the extension’s. 
-	*	The wordpress_main.sh script downloads the Ansible script (wordpress_script.sh) from GitHub.
-	*	The downloaded wordpress_script.sh script is placed in the /home/*azureadmin(user)* directory on the Ansible VM, where *azureadmin(user)* represents the username of the Azure admin account.
+- The ARM Template executes the wordpress_main.sh script from the extension’s. 
+- The wordpress_main.sh script downloads the Ansible script (wordpress_script.sh) from GitHub.
+- The downloaded wordpress_script.sh script is placed in the /home/*azureadmin(user)* directory on the Ansible VM, where *azureadmin(user)* represents the username of the Azure admin account.
 	
 Once the deployment is complete, the Ansible VM extension executes the wordpress_script.sh script, which installs WordPress and the WooCommerce plugin using an Ansible playbook.
 
 The run.sh file runs the Ansible script wordpress_script.sh consisting of the Ansible playbook with the following roles:
 
-	*	__Role: SSH Key Configuration__  
-	Generates the SSH key pair and copies the key pair to the Controller VM using password authentication.
+- **Role: SSH Key Configuration_**  
+Generates the SSH key pair and copies the key pair to the Controller VM using password authentication.
 	
-	*	__Role: WordPress__  
-	Downloads and installs WordPress on the Controller VM.
+- **Role: WordPress**  
+Downloads and installs WordPress on the Controller VM.
 	
-	*	__Role: WooCommerce__  
-	Downloads and installs the WooCommerce plugin on the Controller VM.
+- **Role: WooCommerce**  
+Downloads and installs the WooCommerce plugin on the Controller VM.
 	
-	*	__Role: Replication__  
-	This role executes the following functions.
-			*	__Configure SSL Certs:__ Generates the required OpenSSL certificates and places them in the /azlamp/certs/ directory.
-			*	__Linking Data Location:__ Links the data directory (/azlamp/data/) to all shared web frontend instances.
-			*	__Create Nginx Configuration:__ Creates the Nginx configuration file in the Virtual Machine Scale Set (VMSS) instance.
-			* __Replication:__ Replicates the WordPress directory to the VMSS instance for high availability.
+- **Role: Replication**  
+This role executes the following functions.
+  * __Configure SSL Certs:__ Generates the required OpenSSL certificates and places them in the /azlamp/certs/ directory.
+  * __Linking Data Location:__ Links the data directory (/azlamp/data/) to all shared web frontend instances.
+  * __Create Nginx Configuration:__ Creates the Nginx configuration file in the Virtual Machine Scale Set (VMSS) instance.
+  * __Replication:__ Replicates the WordPress directory to the VMSS instance for high availability.
 
 When all the roles are executed, the installation is complete.
 
