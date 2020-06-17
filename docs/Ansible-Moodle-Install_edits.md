@@ -18,9 +18,8 @@ To install Moodle, you must prepare your system environment as follows:
 
 The installation process consists of the following high-level procedures:
 
-- Enable Password Authentication on the Controller VM
-- Deploy the Ansible VM
-- Install Moodle on the Controller VM
+- Enable password authentication on the Controller VM
+- Deploy the Ansible VM to install Moodle on the Controller VM
 
 ### Enable Password Authentication on the Controller VM
 
@@ -42,35 +41,34 @@ sudo passwd azureadmin
 	*	Controller VM password (the new password that you configured in the previous step)
 
 
-### Deploy the Ansible VM
+### Deploy the Ansible VM to Install Moodle
 
 The Ansible VM will be used to execute the Moodle installation script. To deploy the Ansible VM, you use the ARM Template and provide input parameters describing the Controller VM and the new database that will be created during the installation of Moodle.
 	
 1. Use the [ARM Template](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fummadisudhakar%2FLAMP%2Fansible_playbook_mat32%2Fansibledeploy-moodle.json) to start the Ansible VM deployment. Make sure you are deploying Ansible VM into the same Azure resource group and region that hosts the Controller VM.
-2. Enter the Controller VM information that you gathered earlier:
-	*	Controller VM name
+2. Enter the name of the Ansible VM.
+3. Enter the Controller VM information that you gathered earlier:
+	*	Conroller VM name
 	*	SSH public key
 	*	Controller VM username
 	*	Controller VM IP address
 	*	Controller VM password
-3. Enter the information for the new Moodle database:
+4. Enter the information for the new Moodle database:
 	*	Server name of the MySQL server in the LAMP cluster
 	*	Login username for the MySQL server
 	*	Login password for the MySQL server
 	*	Name of the new Moodle database
-4. Enter additional configuration information:
+5. Enter additional configuration information:
 	*	Domain name of the Moodle instance
 	*	Domain name of the load balancer, which you can obtain from the Azure Portal
 
-**The following processes occur during the deployment:**
+The following processes occur during the deployment:
 
 - The ARM Template executes the moodle_main.sh script from the extension’s.
 - The moodle_main.sh script downloads the Ansible script (moodle_script.sh) from GitHub.
 - The downloaded moodle_script.sh script is placed in the /home/*azureadmin(user)* directory on the Ansible VM, where *azureadmin(user)* represents the username of the Azure admin account.
 
-### Install Moodle on the Controller VM
-
-The Ansible VM executes the moodle_script.sh script, which installs Moodle using an Ansible playbook.
+Once the deployment is complete, the Ansible VM executes the moodle_script.sh script, which installs Moodle using an Ansible playbook.
 
 The run.sh file runs the Ansible script moodle_script.sh consisting of the Ansible playbook with the following roles:
 
