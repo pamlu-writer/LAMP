@@ -69,7 +69,7 @@ Once the deployment is complete, the Ansible VM extension executes the wordpress
 
 The run.sh file runs the Ansible script wordpress_script.sh consisting of the Ansible playbook with the following roles:
 
-- **Role: SSH Key Configuration_**  
+- **Role: SSH Key Configuration**  
 Generates the SSH key pair and copies the key pair to the Controller VM using password authentication.
 	
 - **Role: WordPress**  
@@ -79,7 +79,7 @@ Downloads and installs WordPress on the Controller VM.
 Downloads and installs the WooCommerce plugin on the Controller VM.
 	
 - **Role: Replication**  
-This role executes the following functions.
+This role executes the following functions:
   * __Configure SSL Certs:__ Generates the required OpenSSL certificates and places them in the /azlamp/certs/ directory.
   * __Linking Data Location:__ Links the data directory (/azlamp/data/) to all shared web frontend instances.
   * __Create Nginx Configuration:__ Creates the Nginx configuration file in the Virtual Machine Scale Set (VMSS) instance.
