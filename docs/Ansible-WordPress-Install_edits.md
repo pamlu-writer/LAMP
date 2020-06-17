@@ -45,20 +45,20 @@ sudo passwd azureadmin
 The Ansible VM will be used to execute the WordPress installation script. To deploy the Ansible VM, you use the ARM Template and provide input parameters describing the Controller VM and the new database that will be created during the installation of WordPress.
 
 1. Use the [ARM Template](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fummadisudhakar%2FLAMP%2Fansible_playbook_mat32%2Fansibledeploy-wordpress.json) to start the Ansible VM deployment. Make sure you are deploying the Ansible VM into the same Azure resource group and region that hosts the Controller VM.
-2. Enter the Controller VM information that you gathered earlier:
-	* Ansible VM name
+2. Enter the name of the Ansible VM.
+3. Enter the Controller VM information that you gathered earlier:
 	* SSH public key
 	* Controller VM username
 	* Controller VM IP address
 	* Controller VM password
-3. Enter the information for the new WordPress database:
+4. Enter the information for the new WordPress database:
 	*	Server name of the MySQL server in the LAMP cluster
 	*	Login username for the MySQL server
 	*	Login password for the MySQL server
 	*	Name of the new WordPress database
-4. Enter additional configuration information:
+5. Enter additional configuration information:
 	*	Domain name of the WordPress instance
-	*	Domain of the load balancer
+	*	Domain name of the load balancer, which you can obtain from the Azure Portal
 
 The following processes occur during the deployment:
 - The ARM Template executes the wordpress_main.sh script from the extension’s. 
