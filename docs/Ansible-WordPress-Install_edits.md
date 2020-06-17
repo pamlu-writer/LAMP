@@ -7,25 +7,26 @@ The following diagram shows how the required system components participate in th
 ## Prerequisites
 
 To install WordPress with the WooCommerce plugin, you must prepare your system environment as follows:
-- Deploy a LAMP stack (the Controller VM will be created that will host the WordPress with WooCommerce installation). To support the current installation, the LAMP stack must be running:
+- Deploy a LAMP stack to create the Controller VM that will host the WordPress with WooCommerce installation. To support the current installation, the LAMP stack must be running:
 	*	Ubuntu 16.04 LTS
 	*	Nginx web server 1.10.3
 	*	MySQL PaaS 5.6, 5.7 or 8.0 database server
 	*	PHP 7.2, 7.3, or 7.4 
+	
 - Make sure the Ansible VM is located in the same Azure resource group and region that hosts the Controller VM.
 
 ## Overview of the Installation Process
-- The installation process consists of the following high-level procedures:
-	*	Enable Password Authentication on the Controller VM
-	*	Deploy the Ansible VM
-	*	Install WordPress with WooCommerce on the Controller VM
+The installation process consists of the following high-level procedures:
+* Enable Password Authentication on the Controller VM
+* Deploy the Ansible VM
+* Install WordPress with WooCommerce on the Controller VM
 
 
 ### Enable Password Authentication on the Controller VM
-Enabling password authentication allows you to obtain the Controller VM credentials and copying SSH keys that you will need to deploy the Ansible VM later in the installation process.
+Enabling password authentication allows you to obtain the Controller VM credentials and copy the SSH keys that you will need to deploy the Ansible VM later in the installation process.
 
-- Login to the Controller VM and navigate to the /home/azureadmin(user)/ directory, where azureadmin(user) represents the username of the Azure admin account.
-- Run the following commands to enable password authentication.
+1. Login to the Controller VM and navigate to the /home/*azureadmin(user)*/ directory, where *azureadmin(user)* represents the username of the Azure admin account.
+2. Run the following commands to enable password authentication.
 
 ```
 sudo sed -i "s~PasswordAuthentication no~PasswordAuthentication yes~" /etc/ssh/sshd_config
@@ -34,8 +35,8 @@ sudo sed -i "s~#   StrictHostKeyChecking ask~   StrictHostKeyChecking no~" /etc/
 sudo systemctl restart sshd
 sudo passwd azureadmin
 ```
-- When prompted, configure a new password for the Controller VM.
-- Gather the following information from the Controller VM:
+3. When prompted, configure a new password for the Controller VM.
+4. Gather the following information from the Controller VM:
 	* Controller VM username
 	* Controller VM IP address
 	* Controller VM password (the new password that you configured in the previous step)
